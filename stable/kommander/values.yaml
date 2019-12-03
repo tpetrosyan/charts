@@ -32,6 +32,11 @@ livenessProbe:
   periodSeconds: 10
   timeoutSeconds: 3
 
+### Test Config
+testFramework:
+  image: "dduportal/bats"
+  tag: "0.4.0"
+
 ### This must match the serviceName set in the ingress backend below
 service:
   name: kommander
