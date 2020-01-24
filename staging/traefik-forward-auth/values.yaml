@@ -43,6 +43,7 @@ traefikForwardAuth:
   # or caSecretName: < name of the secret >
   extraConfig: ""
   userCookieName: "_forward_auth_name"
+  enableRBAC: true
 
 ingress:
   enabled: false
