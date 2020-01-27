@@ -43,5 +43,5 @@ metadata:
     "helm.sh/hook-weight": "-2"
     "helm.sh/hook-delete-policy": before-hook-creation
 spec:
-  {{ required "clusterissuer must have a spec" .Values.clusterissuer.spec | toYaml | indent 4 }}
-  {{ end }}
+{{ required "clusterissuer must have a spec" .Values.clusterissuer.spec | toYaml | indent 4 }}
+{{ end }}
