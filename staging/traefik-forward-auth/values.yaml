@@ -29,11 +29,6 @@ traefikForwardAuth:
   domain:
   authHost:
   whitelist: []
-  allowedUser:
-    valueFrom:
-      secretKeyRef:
-        name: secretName
-        key: secretKey
   # oidcUri: ""
   # If undefined use the Kubernetes root CA certificate
   # caCertificate: |
