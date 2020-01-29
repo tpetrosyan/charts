@@ -64,7 +64,9 @@ spec:
             mountPath: "/etc/traefik-forward-auth/config"
             readOnly: true
           args:
+            {{- if .Values.traefikForwardAuth.enableImpersonation }}
             - --enable-impersonation
+            {{- end }}
             {{- if .Values.traefikForwardAuth.enableRBAC }}
             - --enable-rbac
             {{- end }}
@@ -127,6 +129,10 @@ spec:
             {{- if .Values.traefikForwardAuth.authHost }}
             - name: AUTH_HOST
               value: {{ .Values.traefikForwardAuth.authHost | quote }}
+            {{- end }}
+            {{- if gt (len .Values.traefikForwardAuth.RBACPassThroughPaths) 0 }}
+            - name: AUTHZ_PASS_THROUGH
+              value: {{ join "," .Values.traefikForwardAuth.rbacPassThroughPaths | quote }}
             {{- end }}
           ports:
             - name: http
