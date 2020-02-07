@@ -1,5 +1,4 @@
 {{ $ns := .Release.Namespace }}
-{{ $labels := include "thanos.labels" . | indent 4  }}
 {{ $sa := .Values.ServiceAccount }}
 {{- if .Values.thanos.query.enabled }}
 {{- range .Values.thanos.query.serviceDiscoveryFileConfigMaps }}
@@ -10,7 +9,10 @@ metadata:
   name: {{ . }}
   namespace: {{ $ns }}
   labels:
-{{ $labels }}
+    app: {{ include "thanos.name" . }}
+    chart: {{ include "thanos.chart" . }}
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
   annotations:
     helm.sh/hook: pre-install
     helm.sh/hook-delete-policy: before-hook-creation
@@ -24,7 +26,10 @@ metadata:
   name: {{ . }}-configmap-cleanup
   namespace: {{ $ns }}
   labels:
-{{ $labels }}
+    app: {{ include "thanos.name" . }}
+    chart: {{ include "thanos.chart" . }}
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
   annotations:
     "helm.sh/hook": pre-delete
     "helm.sh/hook-weight": "5"
