@@ -12,5 +12,5 @@ sources:
 version: 0.3.14
 icon: https://raw.githubusercontent.com/thanos-io/thanos/master/docs/img/Thanos-logo_fullmedium.png
 maintainers:
-- name: Banzai Cloud
-  email: info@banzaicloud.com
+- name: Tigran Petrosyan
+  email: tpetrosyan.c@d2iq.com
